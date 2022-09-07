@@ -39,10 +39,26 @@
     background: coral;
   }
 </style>
-
-<button></button>
+<button>
+Click Me!
+</button>
 <script>
+const divs = document.querySelectorAll('div');
+const button = document.querySelector('button');
 
+function logText(e) {
+  console.log(this.classList.value);
+ // e.stopPropagation(); // stop bubbling!
+}
+
+divs.forEach(div => div.addEventListener('click', logText, {
+  capture: false
+  }));
+
+button.addEventListener('click', () => {
+  alert("Thanks for Clicking Me! Bet You Can't Do it Again")
+  console.log('Thanks for Clicking Me!')
+}, {once: true});
 </script>
 </body>
 </html>
